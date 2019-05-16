@@ -1,3 +1,5 @@
+import time
+
 from sklearn import tree
 from sklearn.metrics import accuracy_score
 
@@ -16,10 +18,13 @@ if __name__ == "__main__":
     print("-------------------------------------------------------------------------------------------------")
     model = tree.DecisionTreeClassifier()
     print("Training model")
+    Stime = time.time()
     model.fit(features_matrix, labels)
     predicted_label = model.predict(test_feature_matrix)
     print("Finished classifying. accuracy score: ")
     print(accuracy_score(test_labels, predicted_label))
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()
     print("-------------------------------------------------------------------------------------------------")
     model = tree.DecisionTreeClassifier(min_samples_split=40)
     print("Training model min_samples_split=40")
@@ -27,6 +32,8 @@ if __name__ == "__main__":
     predicted_label = model.predict(test_feature_matrix)
     print("Finished classifying. accuracy score: ")
     print(accuracy_score(test_labels, predicted_label))
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()
     print("-------------------------------------------------------------------------------------------------")
     model = tree.DecisionTreeClassifier(criterion="entropy")
     print("Training model criterion=\"entropy\"")
@@ -34,6 +41,8 @@ if __name__ == "__main__":
     predicted_label = model.predict(test_feature_matrix)
     print("Finished classifying. accuracy score: ")
     print(accuracy_score(test_labels, predicted_label))
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()
     print("-------------------------------------------------------------------------------------------------")
     model = tree.DecisionTreeClassifier(criterion="gini")
     print("Training model criterion=\"gini\"")
@@ -41,3 +50,5 @@ if __name__ == "__main__":
     predicted_label = model.predict(test_feature_matrix)
     print("Finished classifying. accuracy score: ")
     print(accuracy_score(test_labels, predicted_label))
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()

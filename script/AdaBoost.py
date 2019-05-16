@@ -1,9 +1,11 @@
+import time
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.metrics import accuracy_score
 
 import script.NaiveBayes as NB
 
 if __name__ == "__main__":
+    Stime = time.time()
     TRAIN_DIR = "../train-mails"
     TEST_DIR = "../test-mails"
 
@@ -20,3 +22,5 @@ if __name__ == "__main__":
     prediction = model.predict(test_feature_matrix)
     print("Finished classifying. accuracy score: ")
     print(accuracy_score(test_labels, prediction))
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()

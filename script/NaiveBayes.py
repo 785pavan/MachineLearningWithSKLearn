@@ -1,4 +1,5 @@
 import os
+import time
 from collections import Counter
 
 import numpy as np
@@ -65,12 +66,15 @@ if __name__ == "__main__":
     print("-------------------------------------------------------------------------------------------------")
 
     model = GaussianNB()
+    Stime = time.time()
     model.fit(feature_matrix, train_labels)
     predicted_labels = model.predict(test_feature_matrix)
     from sklearn.metrics import accuracy_score
 
     accuracy = accuracy_score(test_labels, predicted_labels)
     print("Gaussian NB accuracy: ", accuracy)
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()
 
     # multinormal naiveBayes
     print("-------------------------------------------------------------------------------------------------")
@@ -80,6 +84,8 @@ if __name__ == "__main__":
     predicted_labels = model.predict(test_feature_matrix)
     accuracy = accuracy_score(test_labels, predicted_labels)
     print("Multinomial NB accuracy: ", accuracy)
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()
 
     # bernoulli naiveBayes
     print("-------------------------------------------------------------------------------------------------")
@@ -89,4 +95,6 @@ if __name__ == "__main__":
     predicted_labels = model.predict(test_feature_matrix)
     accuracy = accuracy_score(test_labels, predicted_labels)
     print("Bernoulli NB accuracy: ", accuracy)
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()
     print("-------------------------------------------------------------------------------------------------")

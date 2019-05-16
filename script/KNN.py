@@ -1,6 +1,6 @@
 from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
-
+import time
 import script.NaiveBayes as NB
 
 if __name__ == "__main__":
@@ -16,10 +16,13 @@ if __name__ == "__main__":
     print("-------------------------------------------------------------------------------------------------")
     model = KNeighborsClassifier(n_neighbors=3)
     print("Training model n_neighbors=3")
+    Stime = time.time()
     model.fit(features_matrix, labels)
     predicted = model.predict(test_feature_matrix)
     print("Finished classifying. accuracy score: ")
     print(accuracy_score(test_labels, predicted))
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()
     print("-------------------------------------------------------------------------------------------------")
     model = KNeighborsClassifier(n_neighbors=5)
     print("Training model n_neighbors=5")
@@ -27,6 +30,8 @@ if __name__ == "__main__":
     predicted = model.predict(test_feature_matrix)
     print("Finished classifying. accuracy score: ")
     print(accuracy_score(test_labels, predicted))
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()
     print("-------------------------------------------------------------------------------------------------")
     model = KNeighborsClassifier(algorithm="ball_tree")
     print("Training model algorithm=\"ball_tree\"")
@@ -34,3 +39,5 @@ if __name__ == "__main__":
     predicted = model.predict(test_feature_matrix)
     print("Finished classifying. accuracy score: ")
     print(accuracy_score(test_labels, predicted))
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()

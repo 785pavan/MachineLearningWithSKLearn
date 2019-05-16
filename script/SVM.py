@@ -1,6 +1,6 @@
 from sklearn import svm
 from sklearn.metrics import accuracy_score
-
+import time
 import script.NaiveBayes as NB
 
 if __name__ == "__main__":
@@ -16,14 +16,19 @@ if __name__ == "__main__":
     model = svm.SVC(kernel='linear')
     print("Training Model")
     # train Model
+    Stime = time.time()
     model.fit(features_matrix, labels)
     predicted_labels = model.predict(test_feature_matrix)
     print("FINISHED Classifying. accuracy score : ")
     print(accuracy_score(test_labels, predicted_labels))
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()
     print("-------------------------------------------------------------------------------------------------")
     model = svm.SVC(kernel='rbf', C=1)
     model.fit(features_matrix, labels)
     predicted_labels = model.predict(test_feature_matrix)
     print("FINISHED Classifying. accuracy score : ")
     print(accuracy_score(test_labels, predicted_labels))
+    print("Time taken: " + (-Stime + time.time()).__repr__())
+    Stime = time.time()
     print("-------------------------------------------------------------------------------------------------")
